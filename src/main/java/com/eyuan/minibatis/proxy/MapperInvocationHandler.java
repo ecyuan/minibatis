@@ -33,21 +33,18 @@ public class MapperInvocationHandler implements InvocationHandler {
         sql = sql.replaceAll("#", String.valueOf(args[0]));
         System.out.println("解析后的SQL语句: " + sql);
 
-        System.out.println("开始JDBC的原生化执行");
-        //开始JDBC的原生化执行
+        System.out.println("开始JDBC的原生化执行SQL");
+        //开始JDBC的原生化执行SQL
         Statement statement = sqlSession.getConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
         resultSet.next();
 
         String result = null;
-        //这里只是模拟，获取第一个字段值
+        //这里只获取第一个字段值
         if (resultSet != null) {
             result = resultSet.getString(1);
             System.out.println("resultSet = "+result);
         }
-
-        //然后执行SQL查询 --- 这里自行完善
-        System.out.println("执行SQL并返回结果....");
 
         //处理查询结果并返回 - 这里可以加上回调handler - 加缓存等等
         System.out.println("处理返回结果并最终返回数据....");

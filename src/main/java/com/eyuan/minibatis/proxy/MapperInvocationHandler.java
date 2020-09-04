@@ -29,7 +29,7 @@ public class MapperInvocationHandler implements InvocationHandler {
         //根据mapperInterface（接口）方法method来获取其注解上的SQL 或 相应的XML上的SQL(这里现在没做）
         String sql = method.getAnnotation(Select.class).value();
         System.out.println("获取SQL语句: "+sql);
-        //替换点位符号
+        //替换占位符号
         sql = sql.replaceAll("#", String.valueOf(args[0]));
         System.out.println("解析后的SQL语句: " + sql);
 
